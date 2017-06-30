@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'message-box',
   template: `
     <div class="container">
-      <form>
+      <form (submit)="onSubmit()">
       <label id="messageLabel" for="message">Message </label>
       <br>
         <textarea
@@ -15,50 +15,35 @@ import { Component } from '@angular/core';
           rows="7"
         ></textarea>
         <div *ngIf="tweet.text.length < 141">You have {{140 - tweet.text.length}} characters remaining!</div>
-        <div *ngIf="tweet.text.length > 140">You have reached the limit! :( Please remove {{140 - tweet.text.length}} character(s)!</div>
+        <div
+          *ngIf="tweet.text.length > 140"
+          class="red"
+        >You have reached the limit! :( Please remove {{Math.abs(140 - tweet.text.length)}} character(s)!</div>
         <button
           type="submit"
         >Send!
         </button>
-
-
       </form>
-
-      <span>{{tweet.text}}</span>
     </div>
   `,
-  styles: [``]
+  styles: [`
+    .red {
+      color: red;
+    }
+  `]
 })
 
 export class MessageBox {
+  Math: any;
   tweet = {
     text: ''
   }
+
+  constructor() {
+    this.Math = Math;
+  }
+
+  onSubmit() {
+    alert(this.tweet.text);
+  }
 }
-
-
-
-        // <br style="clear:both">
-        //   <div class="form-group col-md-4 ">
-        //     <label id="messageLabel" for="message">Message </label>
-        //     <textarea
-        //       class="form-control input-sm "
-        //       type="textarea"
-        //       id="message"
-        //       placeholder="Message"
-        //       maxlength="140"
-        //       rows="7"
-        //     >
-        //     </textarea>
-        //         <span class="help-block"><p id="characterLeft" class="help-block ">You have reached the limit</p></span>
-        //   </div>
-        // <br style="clear:both">
-        // <div class="form-group col-md-2">
-        // <button
-        //   class="form-control input-sm btn btn-success disabled"
-        //   id="btnSubmit"
-        //   name="btnSubmit"
-        //   type="button"
-        //   style="height:35px"
-        //   >Send
-        // </button>
