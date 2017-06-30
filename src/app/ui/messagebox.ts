@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   template: `
     <div class="container">
       <form (submit)="onSubmit()">
-      <label id="messageLabel" for="message">Message </label>
+      <label id="messageLabel" for="message">Message: </label>
       <br>
         <textarea
           id="message"
@@ -21,6 +21,7 @@ import { Component } from '@angular/core';
         >You have reached the limit! :( Please remove {{Math.abs(140 - tweet.text.length)}} character(s)!</div>
         <button
           type="submit"
+          [disabled]="tweet.text.length === 0 || tweet.text.length > 140"
         >Send!
         </button>
       </form>
