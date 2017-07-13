@@ -1,5 +1,8 @@
 # Ng2Tweetbox
 
+[demo](https://somethiiing.github.io/ng2-challenges)
+[demo2](https://somethiiing.github.io/ng2-tweetbox)
+
 ## Features
 * Uses FormsModule hook for instant updates on tweet length.
 * Disables send and displays error message when over limit.
@@ -16,5 +19,5 @@
 ## Setup
 npm install
 `ng serve` for dev server
-`ng build1` to build to `dist/`
+`ng build` to build to `dist/`
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.1.3.
